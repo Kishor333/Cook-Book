@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'cook-book';
+
+  link = 'recipe';
+  currentLink(link: string) {
+    this.link= link;
+    }
 }

@@ -1,0 +1,25 @@
+
+.header-logo {
+
+    font-size: 32px;
+    font-family: sans-serif;
+    position: relative;
+    font-weight: 900;
+    background-image: linear-gradient(45deg, #f5f4f2 0%, #ff4081 74%, #f5f4f2 90%);
+    // width: 100%;
+    height: 100%;
+    animation: ani 8s linear forwards infinite;
+    mix-blend-mode: screen;
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  @keyframes ani {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 200% 0;
+    }
+  }

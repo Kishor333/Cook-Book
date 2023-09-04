@@ -1,3 +1,10 @@
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+<section class="main-container">
+  <section class="glass p-4">
+    <app-header (currentRoute)="currentLink($event)"></app-header>
+
+    <section class="p-[32px]">
+      <app-recipes *ngIf="link === 'recipe'"></app-recipes>
+      <app-shopping-list *ngIf="link === 'shoppingList'"></app-shopping-list>
+    </section>
+  </section>
+</section>

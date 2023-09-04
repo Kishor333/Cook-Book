@@ -1,0 +1,26 @@
+.detail--image-container {
+    height: 200px;
+    width: 200px;
+    // background: red;
+    // background: rgba(255,255,255,.1);
+    background-color: transparent;
+    border-radius: 8px;
+    // backdrop-filter: blur(5px);
+    position: relative;
+
+    // &::before {
+    //     content: '';
+    //     position: absolute;
+    //     top: -80px;
+    //     right: -0px;
+    //     width: 200px;
+    //     height: 200px;
+    //     background: transparent;
+    //     // background: yellow;
+    //     // background: rgba(255,255,255,.1);
+    // // border-radius: 8px;
+    // // backdrop-filter: blur(0px);
+    // box-shadow: 15px -15px 0 15px rgba(255,255,255,.1);
+    //     border-bottom-right-radius: 150px;
+    // }
+}
