@@ -1,26 +1,54 @@
-.detail--image-container {
-    height: 200px;
-    width: 200px;
-    // background: red;
-    // background: rgba(255,255,255,.1);
-    background-color: transparent;
-    border-radius: 8px;
-    // backdrop-filter: blur(5px);
-    position: relative;
+.detail-container {
+  overflow-x: hidden;
+}
 
-    // &::before {
-    //     content: '';
-    //     position: absolute;
-    //     top: -80px;
-    //     right: -0px;
-    //     width: 200px;
-    //     height: 200px;
-    //     background: transparent;
-    //     // background: yellow;
-    //     // background: rgba(255,255,255,.1);
-    // // border-radius: 8px;
-    // // backdrop-filter: blur(0px);
-    // box-shadow: 15px -15px 0 15px rgba(255,255,255,.1);
-    //     border-bottom-right-radius: 150px;
-    // }
+
+.image-display {
+  display: none;
+  // backdrop-filter: blur(6px);
+  // transition: all 3s; 
+
+
+    &.dispay-anim {
+      display: flex;
+      animation: dispay-anim  200ms;
+    }
+    
+
+    .overlay-container  {
+      position: absolute;
+      width: 500px;
+      inset: 0;
+      // backdrop-filter: blur(16px);
+      // background-color: red; 
+      transition: all 300ms;
+      &:hover{
+        // background-color: rgba(255,255,255,.1);
+        mix-blend-mode: screen;
+        background-size: 200%;
+        // backdrop-filter: blur(10px);
+        transform: translateX(-210px);
+      }
+    }
+}
+.detail--image-container {
+  height: 200px;
+  width: 200px;
+  
+  background-color: transparent;
+  border-radius: 8px;
+  // backdrop-filter: blur(5px);
+  position: relative;
+}
+
+
+@keyframes dispay-anim {
+  from {
+      transform: translateX(200px);
+      // width: 0%;
+  }
+  to {
+      transform: translateX(0);
+      // width: 100%;
+  }
 }

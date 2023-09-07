@@ -1,10 +1,35 @@
-<section class="flex glass-container border-l-high border-none p-0 h-full">
-    <div class="w-[60%] pl-[80px] py-[60px] text-white">
-        <p class="font-semibold text-center">Name</p>
+<section class="flex items-center glass-container detail-container border-l-high border-none p-0 h-full">
+    <div class="w-[60%] pl-[80px] py-[60px] pr-[24px] text-white relative">
+        <!-- <div class="absolut"> -->
+            <p class="font-semibold text-center text-[24px] mb-[16px]">{{selectedRecipeDetail?.name}}</p>
+            <p>{{selectedRecipeDetail?.description}}</p>
+        <!-- </div> -->
     </div>
-    <div class="flex justify-center border-l-high items-center glass-container w-[40%] border-t-0 h-full">
-        <div class="detail--image-container">
-          <img src="./assets/images/rec1.webp" class="rounded-[50%] " alt="product Image" />     
+    <div [ngClass]="{'dispay-anim': selectedRecipeDetail}"
+     class="flex justify-center items-center relative  z-10 w-[40%] h-full image-display">
+        <div class="glass-container border-l-high overlay-container flex items-center justify-between h-full">
+            <div class="detail--image-container mx-[24px]">
+                <img [src]="'./assets/images/' + selectedRecipeDetail?.imgPath" class="rounded-[50%] " alt="product Image" />     
+            </div>
+            <div class="h-full flex items-center text-white">
+                <div class="pr-[30px]">
+                    <ng-container *ngFor="let item of selectedRecipeDetail?.ingredient">
+                        <p class="text-right">{{item.name}} : {{item.amount}}</p>
+                    </ng-container>
+
+                    <div class="relative" appDropdown>
+                        <div class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer">
+                            <span>Add</span>
+                        </div>
+                        <div class="show absolute top-[50%] right-0 glass-container glass-gray flip-color px-[8px] cursor-pointer text-white z-10 min-w-[150px]">
+                            <p class="glass-container border-none text-center !px-[12px] !py-[6px] mb-[8px] hover-action">Save Data</p>
+                            <p class="glass-container border-none text-center !px-[12px] !py-[6px] mb-[8px] hover-action">Fetch Data</p>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
         </div>
     </div>
 </section>
