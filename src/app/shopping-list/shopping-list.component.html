@@ -1,1 +1,34 @@
-<p>shopping-list works!</p>
+<section class="h-full">
+    <form action="">
+        <section class="flex justify-between">
+            <div class="w-[calc(65%-12px)]">
+                <label for="first_name" class="block mb-2 text-sm font-medium text-white">Name</label>
+                <input type="text" id="first_name" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5" 
+                placeholder="ingrdient" required #ingName>
+            </div>
+            <div class="w-[calc(35%-12px)]">
+                <label for="first_name" class="block mb-2 text-sm font-medium text-white">Amount</label>
+                <input type="number" id="first_name" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5"
+                 placeholder="amount" required #ingAmount>
+            </div>
+        </section>
+        
+    </form>
+    <div class="flex mt-4">
+        <div class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer mr-4" (click)="addIngredient()">
+            <span>Add</span>
+        </div>
+        <div class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer delete mr-4">
+            <span>Delete</span>
+        </div>
+        <div class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer clear">
+            <span>Clear</span>
+        </div>
+    </div>
+
+    <section class="glass-container text-white mt-6 border-none h-[calc(100%-145px)] overflow-y-scroll">
+        <ng-container *ngFor="let item of ingredientList">
+            <p>{{item.name}} ({{item.amount}})</p>
+        </ng-container>
+    </section>
+</section>

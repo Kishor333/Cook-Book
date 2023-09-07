@@ -8,12 +8,20 @@
     backdrop-filter: blur(5px);
     cursor: pointer;
 
-    &.hover-action:hover {
+    &.hover-action:hover, &.with-bg {
         // background: rgba(255,255,255,.2);
         background-image: linear-gradient(45deg, rgba(#f5f4f2, 0.5) 0%, rgba(#ff4081, 0.4) 74%, rgba(#f5f4f2, 0.4) 90%);
         mix-blend-mode: screen;
         background-size: 200%;
     }
+
+    &.glass-gray.flip-color {
+        background-image: linear-gradient(145deg, rgba(#f5f4f2, 0.5) 0%, rgba(66,142,159, .3) 74%, rgba(#f5f4f2, 0.4) 90%);
+    }
+
+    // .with-bg.145deg {
+    //     background-image: linear-gradient(145deg, rgba(#f5f4f2, 0.5) 0%, rgba(#ff4081, 0.4) 74%, rgba(#f5f4f2, 0.4) 90%);
+    // }
 
     &:hover {
         .recipe-img {
@@ -32,11 +40,54 @@
     }
 }
 
+
+.glass-btn {
+    min-width: 100px;
+    padding: 0 20px;
+    height: 40px;
+    border-top: 2px solid rgba(255,255,255,.4);
+    border-left: 2px solid rgba(255,255,255,.4);
+    outline: 1px solid rgba(255,255,255,.4);
+    box-shadow: 8px 8px 32px rgba(0,0,0,.25);
+    background: rgba(255,255,255,.1);
+    color: #fff;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    transition: all 300ms linear;
+
+    &:hover {
+        background-image: linear-gradient(45deg, rgba(#f5f4f2, 0.5) 0%, rgba(#ff4081, 0.4) 74%, rgba(#f5f4f2, 0.4) 90%);
+        mix-blend-mode: screen;
+        background-size: 200%;
+    }
+    &.delete:hover {
+        background-image: linear-gradient(45deg, rgba(#f5f4f2, 0.5) 0%, rgba(#ff5900, 0.6) 74%, rgba(#f5f4f2, 0.4) 90%);
+    }
+    &.clear:hover {
+        background-image: linear-gradient(45deg, rgba(#f5f4f2, 0.5) 0%, rgba(#2600ff, 0.4) 74%, rgba(#f5f4f2, 0.4) 90%);
+    }
+  }
+
+
 .border-l-high {
-    border-radius: 223px 8px 8px 223px;
+    border-radius: 60vh 8px 8px 60vh;
     // border-radius: 50%;
 }
 
 .border-r-high {
     border-radius: 8px 50px 50px 8px;
+}
+
+input {
+    background-color: rgba(255,255,255,.1);
+    color: white;
+    &:focus-visible {
+        outline-color: transparent;
+    }
+}
+
+.parent {
+    .show {
+        display: none;
+    }
 }

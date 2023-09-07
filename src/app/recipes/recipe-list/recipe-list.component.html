@@ -1,21 +1,16 @@
-<section>
-  <div class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer">
+<section class="h-full">
+  
+
+  <section class="list-height overflow-y-scroll">
+    <ng-container *ngFor="let list of recipeList">
+      <div class="glass-container border-r-high mt-4">
+        
+          <app-recipe-item [recipeItem]="list"></app-recipe-item>
+      </div>
+    </ng-container>
+  </section>
+  <div class="mt-5 glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer">
     <span>New Recipe</span>
   </div>
-
-  <section class="mt-5">
-    <div class="glass-container border-r-high">
-      <div class="flex justify-between items-center text-white">
-        <div>
-          <p class="font-semibold">Name</p>
-          <p class="text-[]">Description</p>
-        </div>
-        <div class="w-[50px] h-[50px] ">
-          <img src="./assets/images/rec1.webp" class="rounded-[50%] recipe-img" alt="product Image">
-        </div>
-      </div>
-    </div>
-  </section>
-<app-recipe-item></app-recipe-item>
 
 </section>

@@ -8,5 +8,11 @@
            [ngClass]="{'text-primary':currentHeader === 'shoppingList'}"
            (click)="redirectionTo('shoppingList')">Shopping List</p>
     </div>
-    <p class="mr-5 font-semibold cursor-pointer text-white hover:text-primary">Manage</p>
+    <div class="relative" appDropdown>
+        <p class="mr-5 font-semibold cursor-pointer text-white hover:text-primary">Manage</p>
+        <div class="show absolute top-[50%] right-0 glass-container glass-gray flip-color px-[8px] cursor-pointer text-white z-10 min-w-[150px]">
+            <p class="glass-container border-none text-center !px-[12px] !py-[6px] mb-[8px] hover-action">Save Data</p>
+            <p class="glass-container border-none text-center !px-[12px] !py-[6px] mb-[8px] hover-action">Fetch Data</p>
+        </div>
+    </div>
 </section>

@@ -2,7 +2,7 @@
   <section class="glass p-4">
     <app-header (currentRoute)="currentLink($event)"></app-header>
 
-    <section class="p-[32px]">
+    <section class="content-height p-[32px]">
       <app-recipes *ngIf="link === 'recipe'"></app-recipes>
       <app-shopping-list *ngIf="link === 'shoppingList'"></app-shopping-list>
     </section>

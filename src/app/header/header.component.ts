@@ -9,14 +9,19 @@ export class HeaderComponent implements OnInit {
 
   @Output() currentRoute = new EventEmitter<string>();
 
+  // openMenu =false;
   currentHeader = 'recipe';
   constructor() { }
 
   ngOnInit(): void {
   }
 
-redirectionTo(link: string) {
-  this.currentHeader = link;
- this.currentRoute.emit(link);
-}
+  // toggleMenu():void {
+  //   this.openMenu = !this.openMenu;
+  // }
+
+  redirectionTo(link: string) {
+    this.currentHeader = link;
+  this.currentRoute.emit(link);
+  }
 }
