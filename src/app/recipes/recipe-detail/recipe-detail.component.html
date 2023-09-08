@@ -7,7 +7,7 @@
     </div>
     <div [ngClass]="{'dispay-anim': selectedRecipeDetail}"
      class="flex justify-center items-center relative  z-10 w-[40%] h-full image-display">
-        <div class="glass-container border-l-high overlay-container flex items-center justify-between h-full">
+        <div class="glass-container border-l-high border-t-0 overlay-container flex items-center justify-between h-full">
             <div class="detail--image-container mx-[24px]">
                 <img [src]="'./assets/images/' + selectedRecipeDetail?.imgPath" class="rounded-[50%] " alt="product Image" />     
             </div>
@@ -18,12 +18,13 @@
                     </ng-container>
 
                     <div class="relative" appDropdown>
-                        <div class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer">
-                            <span>Add</span>
+                        <div class="glass-btn min-w-[150px] mt-[20px] relative inline-flex items-center justify-center text-sm font-medium cursor-pointer shadow-none">
+                            <span>Manage</span>
                         </div>
-                        <div class="show absolute top-[50%] right-0 glass-container glass-gray flip-color px-[8px] cursor-pointer text-white z-10 min-w-[150px]">
-                            <p class="glass-container border-none text-center !px-[12px] !py-[6px] mb-[8px] hover-action">Save Data</p>
-                            <p class="glass-container border-none text-center !px-[12px] !py-[6px] mb-[8px] hover-action">Fetch Data</p>
+                        <div class="show absolute top-[80%] right-0 glass-container glass-gray flip-color px-[8px] cursor-pointer text-white z-10 min-w-max text-[14px]">
+                            <p class="glass-container border-none text-center !px-[12px] !py-[6px] mb-[8px] hover-action" (click)="addToShoppingList()">To Shopping List</p>
+                            <p class="glass-container border-none text-center !px-[12px] !py-[6px] mb-[8px] hover-action">Edit Recipe</p>
+                            <p class="glass-container border-none text-center !px-[12px] !py-[6px] mb-[8px] hover-action">Delete Recipe</p>
                         </div>
                     </div>
 

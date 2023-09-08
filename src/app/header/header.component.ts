@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() currentRoute = new EventEmitter<string>();
+  // @Output() currentRoute = new EventEmitter<string>();
 
   // openMenu =false;
   currentHeader = 'recipe';
@@ -20,8 +20,8 @@ export class HeaderComponent implements OnInit {
   //   this.openMenu = !this.openMenu;
   // }
 
-  redirectionTo(link: string) {
-    this.currentHeader = link;
-  this.currentRoute.emit(link);
-  }
+  // redirectionTo(link: string) {
+  //   this.currentHeader = link;
+  // this.currentRoute.emit(link);
+  // }
 }

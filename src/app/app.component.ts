@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  link = 'recipe';
-  currentLink(link: string) {
-    this.link= link;
-    }
+  // link = 'recipe';
+  // currentLink(link: string) {
+  //   this.link= link;
+  //   }
 }

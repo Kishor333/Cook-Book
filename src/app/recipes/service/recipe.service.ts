@@ -1,5 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Recipe } from '../model/recipe.model';
+import { IngredientService } from 'src/app/shopping-list/service/ingredient.service';
+import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +9,7 @@ import { Recipe } from '../model/recipe.model';
 export class RecipeService {
 
   selectedRecipe = new EventEmitter<Recipe>();
-  constructor() { }
+  constructor( private ingService:IngredientService) { }
 
   private recipy:Recipe[] =[
       { name:'Chorizo & mozzarella gnocchi bake',
@@ -74,6 +76,10 @@ export class RecipeService {
 
   getRecipe() {
     return this.recipy.slice();
+  }
+
+  addIngredients(ingredient: Ingredient[]) {
+    this.ingService.addIngredients(ingredient);
   }
 
 }

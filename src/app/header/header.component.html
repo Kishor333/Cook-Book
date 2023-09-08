@@ -2,11 +2,12 @@
     <div class="flex items-center text-white">
         <p class="mr-[52px] ml-5 text-[32px] header-logo">Recipe Book</p>
         <p class="mr-5 cursor-pointer font-semibold hover:text-primary"
-           [ngClass]="{'text-primary':currentHeader === 'recipe'}"
-           (click)="redirectionTo('recipe')">Recipe</p>
+           [routerLinkActive]="'text-primary'"
+           [routerLinkActiveOptions]="{exact:true}"
+           routerLink="">Recipe</p>
         <p class="mr-5 cursor-pointer font-semibold hover:text-primary"
-           [ngClass]="{'text-primary':currentHeader === 'shoppingList'}"
-           (click)="redirectionTo('shoppingList')">Shopping List</p>
+           routerLinkActive="text-primary"
+           routerLink="shoppingList">Shopping List</p>
     </div>
     <div class="relative" appDropdown>
         <p class="mr-5 font-semibold cursor-pointer text-white hover:text-primary">Manage</p>

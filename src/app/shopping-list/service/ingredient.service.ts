@@ -18,9 +18,9 @@ export class IngredientService {
     return this.ingredient.slice();
   }
 
-  addIngredients(ingredirntAdded: Ingredient) {
-    this.ingredient.push(ingredirntAdded);
+  addIngredients(ingredirntAdded: Ingredient[]) {
+    this.ingredient.push(...ingredirntAdded);
     this.newIngredirnt.emit(this.ingredient.slice());
-    console.log(ingredirntAdded);
+    // console.log(ingredirntAdded);
   }
 }
