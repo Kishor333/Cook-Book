@@ -8,7 +8,7 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 })
 export class RecipeService {
 
-  selectedRecipe = new EventEmitter<Recipe>();
+  // selectedRecipe = new EventEmitter<Recipe>();
   constructor( private ingService:IngredientService) { }
 
   private recipy:Recipe[] =[
