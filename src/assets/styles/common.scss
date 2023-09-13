@@ -23,7 +23,7 @@
     //     background-image: linear-gradient(145deg, rgba(#f5f4f2, 0.5) 0%, rgba(#ff4081, 0.4) 74%, rgba(#f5f4f2, 0.4) 90%);
     // }
 
-    &:hover {
+    &:hover, &.active-list {
         .recipe-img {
             transform: rotateZ(45deg);
             transform-style: preserve-3d;

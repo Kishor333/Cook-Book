@@ -76,6 +76,10 @@ export class RecipeService {
 
   getRecipe() {
     return this.recipy.slice();
+  };
+
+  getCurrentRecipe (index:number){
+    return this.recipy[index];
   }
 
   addIngredients(ingredient: Ingredient[]) {

@@ -1,4 +1,6 @@
-    <div class="flex justify-between items-center text-white" (click)="selcetedRecipe()">
+    <div class="flex justify-between items-center text-white  glass-container border-r-high mt-4 "
+     [routerLink]="[index]"
+     routerLinkActive="active-list">
         <div class="w-[calc(100%-70px)]">
           <p class="font-semibold truncate">{{recipeItem.name}}</p>
           <p class="text-[14px] truncate mt-[6px]">{{recipeItem.description}}</p>

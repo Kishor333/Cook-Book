@@ -2,14 +2,14 @@
   
 
   <section class="list-height overflow-y-scroll">
-    <ng-container *ngFor="let list of recipeList">
-      <div class="glass-container border-r-high mt-4">
+    <ng-container *ngFor="let list of recipeList; let i = index">
+      <div class="p-0">
         
-          <app-recipe-item [recipeItem]="list"></app-recipe-item>
+          <app-recipe-item [recipeItem]="list" [index]="i"></app-recipe-item>
       </div>
     </ng-container>
   </section>
-  <div class="mt-5 glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer">
+  <div class="mt-5 glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer" (click)="addNewRecipe()">
     <span>New Recipe</span>
   </div>
 
