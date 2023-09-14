@@ -1,3 +1,35 @@
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+
+<form class="form">
+  <div class="form-title !mt-[60px]"><span>sign in to your</span></div>
+   <div class="title-2"><span>SPACE</span></div>
+
+   <section class="bg-stars">
+     <span *ngFor="let item of [1,2,3,4,5,6,7]" class="star"></span>
+     
+   </section>
+
+   <section class="content flex justify-center items-center !mt-[60px]">
+    <div class="glass">
+      <app-forms></app-forms>
+    </div>
+   </section>
+    
+</form>
+
+
+
+<div id="leftmenu" class="z-10">
+  <div id="date_time">
+      <div id="date" class="semi_arc e4 c_ease">
+          <div class="semi_arc_2 e4_1">
+              <div class="counterspin4"></div>
+          </div>
+          <div style="color:#02feff;font-size: 40px; margin-top: 0px;" id="login-date">{{ currentDayword }}</div>
+          <div style="color:#02feff;font-size: 25px;margin-top: -65px;" id="login-month">{{ currentMonth }}</div>
+      </div>
+      <div id="time" class="arc e1 c_ease">
+          <div style="color:#02feff;font-size: 18px; margin-left: 0px; margin-top: 52px;text-align:center;" id="login-time">{{ currentDate | date:'shortTime' }}</div>
+          <div style="color:#02feff;font-size: 17px; margin-top: -20px;" id="login-day">{{ currentDay }}</div>
+      </div>
+  </div>
+</div>
