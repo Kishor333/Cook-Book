@@ -4,3 +4,39 @@
 @tailwind utilities;
 
 
+::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+  }
+  
+  input, select, textarea {
+    background-color: rgba(255,255,255,.1);
+    color: white;
+    &:focus-visible {
+        outline-color: transparent;
+    }
+}
+
+input, select, textarea {
+  &.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+}
+
+.glass {
+  width: 50dvw;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+
+  &.new {
+    background: rgba(9, 250, 251, 0.2);
+  }
+}

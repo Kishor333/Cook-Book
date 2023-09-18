@@ -1,8 +1,60 @@
 <section class="!text-white">
-    <form action="">
-        <div>
-            <label for="first_name" class="block mb-2 text-sm font-medium ">First name</label>
-            <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required>
+    <form (ngSubmit)="onSubmit(faa)" #faa="ngForm">
+        <div class="w-full relative">
+            <label for="first_name" class="block mb-2 text-sm font-medium text-white">User Name</label>
+            <input type="text" id="first_name"
+             class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5" 
+             ngModel name="name" #name="ngModel"
+             required>
+
+             <div class="relative" *ngIf="!name.valid && name.touched">
+                <p class="absolute top-0 text-red-500 pl-3 text-[12px]">please fill up the field</p>
+             </div>
+        </div>
+        <div role="button" class="flex justify-center !mt-[16px]" (click)="suggestUserdata()">
+            <app-liquid-btn [label]="'Suggest an Username'" [valid]="false"></app-liquid-btn>
+        </div>
+
+        <div class="flex justify-between flex-wrap">
+            <div class="w-full !mb-3">
+                <label for="first_name" class="block mb-2 text-sm font-medium text-white">Mail</label>
+                <input type="text" id="first_name" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5" 
+                ngModel name="Email" 
+                email #email="ngModel"
+                required >
+
+                <div class="relative" *ngIf="!email.valid && email.touched">
+                    <p class="absolute top-0 text-red-500 pl-3 text-[12px]">invalid email</p>
+                 </div>
+            </div>
+        </div>
+        <div class="flex justify-between flex-wrap" ngModelGroup="queAnsData">
+            <div class="w-[calc(50%-12px)]">
+                <label for="first_name" class="block mb-2 text-sm font-medium text-white">Secret Question</label>
+                <select id="countries" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5"
+                [ngModel] ="defaultQuestion"
+                 name="question" >
+                    <option value="pet">Your first pet?</option>
+                    <option value="teacher">Your first teacher?</option>
+                  </select>
+            </div>
+            <div class="w-[calc(50%-12px)]">
+               <div class="">
+                <label for="first_name" class="block mb-2 text-sm font-medium text-white">Answer</label>
+                <textarea name="answer" id="answer" class=" w-full !h-[38px]"
+                [(ngModel)]="response"
+                required></textarea>
+
+                <p class="text-[12px]">your answer is: {{response}}</p>
+               </div>
+            </div>
+        </div>
+        <div role="button" type="Submit" class="flex justify-center !mt-[16px]">
+            <app-liquid-btn [label]="'Submit'" [valid]="!faa.valid"></app-liquid-btn>
         </div>
     </form>
 </section>
+
+<div *ngIf="showUserData" class="glass new result-container">
+<app-glitch-card [userData]="user"></app-glitch-card>
+</div>
