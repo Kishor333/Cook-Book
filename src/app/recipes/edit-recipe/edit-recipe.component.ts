@@ -10,6 +10,7 @@ export class EditRecipeComponent implements OnInit {
 
   id?:number;
   editMode:boolean=false;
+  
   constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {

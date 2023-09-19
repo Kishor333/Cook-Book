@@ -78,7 +78,7 @@
     border-radius: 8px 50px 50px 8px;
 }
 
-input {
+input,textarea {
     background-color: rgba(255,255,255,.1);
     color: white;
     &:focus-visible {
