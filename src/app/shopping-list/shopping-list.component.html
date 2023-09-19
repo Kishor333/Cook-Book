@@ -2,8 +2,8 @@
     <app-shopping-edit></app-shopping-edit>
     
     <section class="glass-container text-white mt-6 border-none h-[calc(100%-145px)] overflow-y-scroll">
-        <ng-container *ngFor="let item of ingredientList">
-            <p>{{item.name}} ({{item.amount}})</p>
+        <ng-container *ngFor="let item of ingredientList; let i = index">
+            <p (click)="editItem(i)">{{item.name}} ({{item.amount}})</p>
         </ng-container>
     </section>
 </section>

@@ -1,26 +1,33 @@
-<form action="">
+<form (ngSubmit)="onAddItem(f)" #f="ngForm">
     <section class="flex justify-between">
         <div class="w-[calc(65%-12px)]">
             <label for="first_name" class="block mb-2 text-sm font-medium text-white">Name</label>
             <input type="text" id="first_name" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5" 
-            placeholder="ingrdient" required #ingName>
+            placeholder="ingrdient" required
+            name="name" ngModel>
         </div>
         <div class="w-[calc(35%-12px)]">
-            <label for="first_name" class="block mb-2 text-sm font-medium text-white">Amount</label>
-            <input type="number" id="first_name" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5"
-             placeholder="amount" required #ingAmount>
+            <label for="amount" class="block mb-2 text-sm font-medium text-white">Amount</label>
+            <input type="number" id="amount" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5"
+             placeholder="amount"
+             required pattern="^[1-9]+[0-9]*$"
+              name="amount" ngModel>
         </div>
     </section>
     
-</form>
+
 <div class="flex mt-4">
-    <div class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer mr-4" (click)="addIngredient()">
-        <span>Add</span>
-    </div>
-    <div class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer delete mr-4">
+    <button type="submit" [disabled]="!f.valid">
+        <div role="button" type="submit" class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer mr-4" >
+            <span>{{!editMode ? 'Add':'Update'}}</span>
+        </div>
+    </button>
+    <div *ngIf="editMode"
+     class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer delete mr-4" (click)="deleteItem()">
         <span>Delete</span>
     </div>
-    <div class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer clear">
+    <div class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer clear" (click)="clearFilter()">
         <span>Clear</span>
     </div>
 </div>
+</form>

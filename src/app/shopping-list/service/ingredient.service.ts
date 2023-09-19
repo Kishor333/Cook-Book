@@ -9,6 +9,8 @@ export class IngredientService {
   // newIngredirnt = new EventEmitter<Ingredient[]>();
   newIngredirnt = new Subject<Ingredient[]>();
 
+  editableIngridentIndex = new Subject<number>();
+
 
   constructor() { }
 
@@ -19,11 +21,27 @@ export class IngredientService {
 
   getIngredient() {
     return this.ingredient.slice();
-  }
+  };
+
+  getEditableIngredient(index:number) {
+    return this.ingredient[index];
+  };
 
   addIngredients(ingredirntAdded: Ingredient[]) {
     this.ingredient.push(...ingredirntAdded);
-    this.newIngredirnt.next(this.ingredient.slice());
+    this.newIngredirnt.next(this.ingredient.slice()); //show the change in ingredient
     // console.log(ingredirntAdded);
+  };
+
+  updateIngredient(index:number, data: any) {
+    this.ingredient[index] = data;
+    this.newIngredirnt.next(this.ingredient.slice());
+
+    // console.log(this.ingredient.slice());
+  };
+
+  deleteIngredient(index:number) {
+    this.ingredient.splice(index,1);
+    this.newIngredirnt.next(this.ingredient.slice());
   }
 }
