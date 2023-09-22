@@ -1,12 +1,17 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+
 import { Recipe } from '../model/recipe.model';
 import { IngredientService } from 'src/app/shopping-list/service/ingredient.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
+  recipeChange = new Subject<Recipe[]>();
+
 
   // selectedRecipe = new EventEmitter<Recipe>();
   constructor( private ingService:IngredientService) { }
@@ -80,10 +85,34 @@ export class RecipeService {
 
   getCurrentRecipe (index:number){
     return this.recipy[index];
-  }
+  };
 
   addIngredients(ingredient: Ingredient[]) {
     this.ingService.addIngredients(ingredient);
+  };
+
+  addNewRecipe(newRecipe: Recipe) {
+    this.recipy.push(newRecipe);
+    this.recipeChange.next(this.recipy.slice());
+
+  };
+
+  deleteRecipy(recIndex:number) {
+    this.recipy.splice(recIndex, 1);
+    this.recipeChange.next(this.recipy.slice());
   }
 
+  // deleteIngredient(recIndex:number, ingIndex:number) {
+  //   // console.log(this.recipy[recIndex].ingredient[ingIndex]);
+
+  //   this.recipy[recIndex].ingredient.splice(ingIndex, 1);
+
+  //   this.recipeChange.next(this.recipy.slice());
+  //   // console.log(this.recipy[recIndex].ingredient);
+  // }
+
+  updateRecipe(index:number, updatedRecipe:Recipe) {
+    this.recipy[index] = updatedRecipe;
+    this.recipeChange.next(this.recipy.slice())
+  }
 }

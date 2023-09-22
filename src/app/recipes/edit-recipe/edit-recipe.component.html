@@ -1,14 +1,14 @@
-<section class="pl-[140px] mt-[24px] pr-[24px]">
-  <form>
-    <section class="flex justify-end sticky top-0">
-        <div
-            class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer clear">
-            <span>Clear</span>
-        </div>
-        <div
-        class="glass-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer delete ml-4">
+<section class="pl-[140px] pr-[24px] py-[24px]">
+  <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <section class="flex justify-end sticky top-[16px] ">
+        <button type="button" (click)="cancelEdit()"
+            class="glass-btn clear-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer clear">
+            <span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="!recipeForm.valid"
+        class="glass-btn  warn-btn  relative inline-flex items-center justify-center text-sm font-medium cursor-pointer delete ml-4">
         <span>Save</span>
-        </div>
+        </button>
    
     </section>
     
@@ -18,43 +18,50 @@
                 <label for="recipeName" class="block mb-2 text-sm font-medium text-white">Name</label>
                 <input type="text" id="recipeName" class="border border-white text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5" 
                 placeholder="recipe Name"
-                name="recipeName">
+                formControlName="name">
             </div>
             <div class="w-[calc(50%-12px)]">
                 <label for="imgurl" class="block mb-2 text-sm font-medium text-white">Image Url</label>
                 <input type="text" id="imgurl" class="border border-white text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5"
                  placeholder="img url"
-                  name="imgUrl">
+                 formControlName="imgPath">
             </div>
 
             <div class="w-full mt-3">
                 <label for="description" class="block mb-2 text-sm font-medium text-white">Image Url</label>
-                <textarea name="description" id="description" rows="2"
+                <textarea formControlName="description" id="description" rows="2"
                     class="border border-white text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5">
                 </textarea>
             </div>
 
             <p class="text-white mt-3 mb-2"> Ingrdient</p>
-            <section class="flex w-full items-end">
+        
+            <section class="w-full" formArrayName="ingredient">
+                <div *ngFor="let ingre of ingredientFormGroups.controls; let i = index">
+                    <div class="flex w-full items-end mb-2" [formGroupName]="i">
+                        <div class="w-[calc(65%-32px)] mr-[12px]">
+                            <input type="text" id="first_name" class="border border-white text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5" 
+                            placeholder="Ingrdient Name"
+                            formControlName="name">
+                        </div>
+                        <div class="w-[calc(35%-32px)] mr-[12px]">
+                            <input type="number" id="amount" class="border border-white text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5"
+                             placeholder="amount"
+                             formControlName="amount">
+                        </div>
+        
+                        <div (click)="deleteIngredient(i)"
+                        class="flex justify-center items-center border text-white border-white w-[40px] h-[40px] rounded hover:text-red-400 hover:border-transparent hover:bg-red-100">
+                                <span>X</span>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="w-[calc(65%-32px)] mr-[12px]">
-                    <!-- <label for="first_name" class="block mb-2 text-sm font-medium text-white">Name</label> -->
-                    <input type="text" id="first_name" class="border border-white text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5" 
-                    placeholder="Ingrdient Name" required
-                    name="name">
-                </div>
-                <div class="w-[calc(35%-32px)] mr-[12px]">
-                    <!-- <label for="amount" class="block mb-2 text-sm font-medium text-white">Amount</label> -->
-                    <input type="number" id="amount" class="border border-white text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5"
-                     placeholder="amount"
-                     required pattern="^[1-9]+[0-9]*$"
-                      name="amount" ngModel>
-                </div>
-
-                <div class="flex justify-center items-center border text-white border-white w-[40px] h-[40px] rounded hover:text-red-400 hover:border-transparent hover:bg-red-100">
-                        <span>X</span>
-                </div>
             </section>
+            <div (click)="addIngredient()"
+                    class="glass-btn clear-btn ml-auto inline-flex items-center justify-center text-sm font-medium cursor-pointer clear">
+                    <span>Add Ingredient</span>
+            </div>
         </div>
     </section>
 </form>
