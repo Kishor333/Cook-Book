@@ -1,0 +1,71 @@
+<section>
+    <form (ngSubmit)="onCreatePost(f.value)" #f="ngForm">
+        <div class="w-full relative">
+            <label for="first_name" class="block mb-2 text-sm font-medium text-white">Title</label>
+            <input type="text" id="title"
+             class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5" 
+             ngModel
+            name="title"
+              #name="ngModel"
+             required>
+    
+             <div class="relative" *ngIf="!name.valid && name.touched">
+                <p class="absolute top-0 text-red-500 pl-3 text-[12px]">please fill up the field</p>
+             </div>
+        </div>
+    
+        <div class="mt-[24px]">
+            <label for="content" class="block mb-2 text-sm font-medium text-white">Content</label>
+            <textarea  id="answer" class=" w-full !h-[60px]" 
+            required
+            ngModel
+            name="content"
+            #content="ngModel"
+            ></textarea>
+        </div>
+    
+        <button [disabled]="f.invalid" type="submit" class="flex justify-center !mt-[16px] mx-auto">
+            <app-liquid-btn [label]="'Submit'" ></app-liquid-btn>
+        </button>
+    </form>
+
+    <section class="mt-[24px] flex w-full">
+        <button class="btn btn--liquidBtn !mx-auto" (click)="onFetchData()" >
+            <span class="text-[14px]">Fetch Data</span>
+            <div [ngClass]="{'short':true}" class="btn--liquidBtn--liquid"></div>
+        </button>
+
+        <button class="btn btn--liquidBtn !mx-auto" (click)="onDeleteData()" >
+            <span class="text-[14px]">Clear Data</span>
+            <div [ngClass]="{'short':true}" class="btn--liquidBtn--liquid"></div>
+        </button>
+    </section>
+
+    <section class="w-full mt-[24px]">
+        <div class="glass !w-full !max-h-[150px] !min-h-[100px] overflow-y-scroll">
+            <p *ngIf="!serverData.length && !error">There is no any data in the server!...</p>
+            
+            <ng-container *ngIf="serverData.length">
+                <div  *ngFor="let item of serverData">
+                    <div class="flex mb-3">
+                        <p class="text-[14px] w-[30%]">
+                            Title:<span class="text-[16px]">{{item.title}}</span>
+                        </p>
+                        <p class="text-[14px]">
+                            Content:<span class="text-[16px]">{{item.content}}</span>
+                        </p>
+                    </div>
+                </div>
+            </ng-container>
+            
+            <div class="bg-red-200 rounded p-[16px] text-red-400"*ngIf="error" >
+                <p class="text-[20px]">An Error occured:</p>
+                <p>{{error}}</p>
+                <!-- <p>{{error.error}}</p> -->
+
+            </div>
+        </div>
+            
+    </section>
+
+</section>
