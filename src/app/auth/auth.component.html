@@ -1,0 +1,160 @@
+    
+<section class="w-full h-full">
+    <div class="main-auth glass-container h-full max-w-[712px] mx-auto !p-0 relative">
+        <section class="flex h-full">
+            <!-- Login section -->
+            <section class="flex mt-[50px] signup w-[50%] h-full p-5">
+                
+                <div class="w-full " [ngClass]="isSignup? 'hide': 'show'">
+                    <!-- <div *ngTemplateOutlet="authFormField"></div> -->
+                    <p class="w-full text-center text-[32px] font-bold text-white mb-4">Sign In</p>
+
+                    <div class="flex justify-center gap-[12px] my-[20px]">
+                        <div class="w-[50px] h-[50px] border border-white rounded-[50%]" *ngFor="let item of [1,2,3]"></div>
+                    </div>
+
+                    <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
+                        <div class="w-full">
+                            <label for="emailLog" class="block mb-2 text-sm font-medium text-white">E-mail</label>
+                            <input type="text" id="emailLog" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5" 
+                            placeholder="email" 
+                            required
+                            email
+                            name="emaillog"
+                            ngModel>
+                        </div>
+                        <div class="w-full mt-4">
+                            <label for="passwordLog" class="block mb-2 text-sm font-medium text-white">Password</label>
+                            <input type="password" id="passwordLog" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5"
+                             placeholder="password"
+                             required
+                             minlength="6"
+                             name="passwordlog" ngModel>
+                        </div>
+
+                        <button type="submit" [disabled]="!authForm.valid"
+                            class="relative flex justify-center items-center py-[16px] px-[50px] max-w-min rounded-[16px] duration-150
+                            border border-[1.5px] border-pink-400 mt-3 cursor-pointer text-primary hover:py-[1px]  hover:border-y-[16px] group">
+                            <span class="absolute group-hover:text-white">Sign in</span>
+                        </button>
+                    </form>
+                    <section *ngIf="hasError && !isSignup" class="border border-red-400 bg-red-200 text-red-400 p-3 rounded w-full flex justify-center mt-3">
+                        <p>{{hasError}}</p>
+                    </section>
+                </div>
+            </section>
+            <!-- Sign up section -->
+            <section class="login p-5 mt-[50px] w-[50%]">
+                <div [ngClass]="!isSignup ? 'hide': 'show'">
+                    <!-- <div *ngTemplateOutlet="authFormField"></div> -->
+                    <p class="w-full text-center text-[32px] font-bold text-white mb-4">Sign Up</p>
+
+                    <div class="flex justify-center gap-[12px] my-[20px]">
+                        <div class="w-[50px] h-[50px] border border-white rounded-[50%]" *ngFor="let item of [1,2,3]"></div>
+                    </div>
+
+                    <form (ngSubmit)="onSubmit(signupForm)" #signupForm="ngForm">
+                        <div class="w-full">
+                            <label for="email" class="block mb-2 text-sm font-medium text-white">E-mail</label>
+                            <input type="text" id="email" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5" 
+                            placeholder="email" 
+                            required
+                            email
+                            name="email"
+                            ngModel>
+                        </div>
+                        <div class="w-full mt-4">
+                            <label for="password" class="block mb-2 text-sm font-medium text-white">Password</label>
+                            <input type="password" id="password" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5"
+                             placeholder="password"
+                             required
+                             minlength="6"
+                             name="password" ngModel>
+                        </div>
+
+                        <button type="submit" [disabled]="!signupForm.valid"
+                            class="relative flex justify-center items-center py-[16px] px-[50px] max-w-min rounded-[16px] duration-150
+                            border border-[1.5px] border-pink-400 mt-3 cursor-pointer text-primary hover:py-[1px]  hover:border-y-[16px] group">
+                            <span class="absolute group-hover:text-white">Sign Up</span>
+                        </button>
+                    </form>
+                    <section *ngIf="hasError && isSignup" class="border border-red-400 bg-red-200 text-red-400 p-3 rounded w-full flex justify-center mt-3">
+                        <p>{{hasError}}</p>
+                    </section>
+                </div>    
+            </section>
+        </section>
+    
+        <section class="container-bg text-white glass-container top-0 absolute w-[50%] h-full"
+           [ngClass]="isSignup ? 'page-active':''">
+            <section class="relative h-full w-full">
+                <div class="flex justify-center items-center flex-col front-side absolute inset-0" [ngClass]="!isSignup? 'hide': 'show'" >                
+                    <p class="text-center text-[32px] font-bold">Welcome Back!</p>
+                    <p class="mt-3 text-center text-[18px]">To keep connected with us please login with your personal info</p>
+
+                    <div role="button" (click)="switchAuth(false)"
+                         class="relative flex justify-center items-center py-[16px] px-[50px] max-w-min rounded-[16px] duration-150
+                          border border-[1.5px] border-pink-400 mt-3 cursor-pointer text-primary hover:py-[1px]  hover:border-y-[16px] group">
+                        <span class="absolute group-hover:text-white">Sign in</span>
+                    </div>
+
+                </div>
+    
+                <div class="flex justify-center items-center  flex-col absolute inset-0" [ngClass]="isSignup? 'hide': 'show'">
+                    <p class="text-center text-[32px] font-boldd">Hello, Explorer!</p>
+                    <p class="mt-3 text-center text-[18px]">Enter your personal details and start journey with us</p>
+
+                    <div role="button" (click)="switchAuth(true)"
+                         class="relative flex justify-center items-center py-[16px] px-[50px] max-w-min rounded-[16px] duration-150
+                          border border-[1.5px] border-pink-400 mt-3 cursor-pointer text-primary hover:py-[1px]  hover:border-y-[16px] group">
+                        <span class="absolute group-hover:text-white">Sign up</span>
+                    </div>
+
+                </div>
+            </section>
+        </section>
+    </div>
+    
+</section>
+
+<ng-container *ngIf="isLoading">
+    <app-loader></app-loader>
+</ng-container>
+
+<!-- <ng-template #authFormField>
+    <p class="w-full text-center text-[32px] font-bold text-white mb-4">Sign Up</p>
+
+    <div class="flex justify-center gap-[12px] my-[20px]">
+        <div class="w-[50px] h-[50px] border border-white rounded-[50%]" *ngFor="let item of [1,2,3]"></div>
+    </div>
+
+    <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
+        <div class="w-full">
+            <label for="email" class="block mb-2 text-sm font-medium text-white">E-mail</label>
+            <input type="text" id="email" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5" 
+            placeholder="email" 
+            required
+            email
+            name="email"
+            ngModel>
+        </div>
+        <div class="w-full mt-4">
+            <label for="password" class="block mb-2 text-sm font-medium text-white">Password</label>
+            <input type="password" id="password" class="!bg-red border border-gray-300 text-white text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5"
+             placeholder="password"
+             required
+             minlength="6"
+             name="password" ngModel>
+        </div>
+
+        <button type="submit" [disabled]="!authForm.valid"
+            class="relative flex justify-center items-center py-[16px] px-[50px] max-w-min rounded-[16px] duration-150
+            border border-[1.5px] border-pink-400 mt-3 cursor-pointer text-primary hover:py-[1px]  hover:border-y-[16px] group">
+            <span class="absolute group-hover:text-white">Sign Up</span>
+        </button>
+    </form>
+    <section *ngIf="hasError" class="border border-red-400 bg-red-200 text-red-400 p-6 w-full flex justify-center mt-3">
+        <p>{{hasError}}</p>
+    </section>
+
+</ng-template> -->

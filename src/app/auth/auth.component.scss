@@ -1,0 +1,61 @@
+section {
+    // perspective: 1000px;
+}
+.main-auth {
+    .signup {
+
+    }
+
+    .login {
+        
+    }
+    
+
+    .show {
+        animation: animShow 1.5s ease forwards;
+
+    }
+    .hide {
+        animation: animHide 1.5s ease forwards;       
+    }
+
+    .container-bg {
+        // perspective: 1000px;
+        right: 0;
+        backdrop-filter: blur(8px) !important;
+        background: rgba(255,255,255,.3);
+        border: none !important;
+        transition: 2s;
+        transform-origin: left center;
+        border-radius: 0 8px 8px 0 !important;
+        z-index: 999;
+
+        &.page-active{
+            transform: rotateY(180deg);
+        }
+
+
+        .front-side {
+            transform: rotateY(180deg);
+        }
+    }
+}
+
+@keyframes animShow {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes animHide {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
