@@ -19,6 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthInterceptorInterceptor } from './auth/auth-interceptor.interceptor';
+import { DynamicModalComponent } from './shared/dynamic-modal/dynamic-modal.component';
+import { ModalPlaceholderComponent } from './shared/modal-placeholder.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { AuthInterceptorInterceptor } from './auth/auth-interceptor.interceptor'
     RecipeStartComponent,
     EditRecipeComponent,
     AuthComponent,
-    LoaderComponent
+    LoaderComponent,
+    DynamicModalComponent,
+    ModalPlaceholderComponent
   ],
   imports: [
     BrowserModule,

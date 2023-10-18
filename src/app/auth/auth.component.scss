@@ -28,7 +28,7 @@ section {
         transition: 2s;
         transform-origin: left center;
         border-radius: 0 8px 8px 0 !important;
-        z-index: 999;
+        // z-index: -1;
 
         &.page-active{
             transform: rotateY(180deg);
@@ -57,5 +57,11 @@ section {
     to {
         opacity: 0;
         display: none;
+    }
+}
+
+:host .main-auth:has(app-modal) {
+    .container-bg {
+        z-index: -1 !important;
     }
 }

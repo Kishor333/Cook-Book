@@ -1,0 +1,11 @@
+<section class="main-fall" (click)="onClose(); $event.stopPropagation;">
+    
+    <div class="main-box glass-container">
+        <div class="flex justify-between items-center">
+            <p class="text-[18px]">Error:</p>
+            <span (click)="onClose()" class="flex justify-center items-center remove-modal text-black"><span>X</span></span>
+        </div>
+        <p class="mt-5">{{message ? message : 'No message for now'}}</p>
+    </div> 
+    
+</section>

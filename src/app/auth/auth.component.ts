@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 // import { Router } from 'express';
 import { Router } from '@angular/router';
 import { AuthService, authResponseData } from './auth.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { ModalPlaceholderComponent } from '../shared/modal-placeholder.component';
+import { DynamicModalComponent } from '../shared/dynamic-modal/dynamic-modal.component';
 
 @Component({
   selector: 'app-auth',
@@ -18,10 +20,19 @@ export class AuthComponent implements OnInit {
 
   authObs: Observable<authResponseData> | any;
 
-  constructor(private authService:AuthService, private route: Router) { }
+  closeModalSub : Subscription | any;
+
+  @ViewChild(ModalPlaceholderComponent, {static: true})
+  modalPlaceholder!: ModalPlaceholderComponent;
+
+  constructor(private authService:AuthService, private route: Router, private viewContainerRef: ViewContainerRef) { }
+
   
   ngOnInit(): void {
+    // this.showErrorModal('Hello form this side. Learning code is grate');
   }
+
+  
 
   switchAuth(value: boolean) {
     this.isSignup = value;
@@ -54,6 +65,7 @@ export class AuthComponent implements OnInit {
         },
        ( errorMessage: any) => {
           this.hasError = errorMessage;
+          this.showErrorModal(this.hasError);
           this.isLoading = false;
           console.log(errorMessage)
         }
@@ -61,5 +73,26 @@ export class AuthComponent implements OnInit {
     
     value.reset();
     }
-    
+ 
+    onCloseModal() {
+      this.hasError = null;
+    };
+
+    private showErrorModal(errormessage: string | null) {
+      const componentRef = this.modalPlaceholder.viewContinerRef.createComponent(DynamicModalComponent); 
+        // message: errormessage,
+        // isClose: new EventEmitter<void>(),
+        // onClose: () => {
+        //   this.onCloseModal();
+        componentRef.instance.message = errormessage;
+        
+        this.closeModalSub =  componentRef.instance.isClose.subscribe(
+          ()=>{
+            this.closeModalSub?.unsubscribe();
+            componentRef.destroy();
+          }
+        )
+      
+      
+    }
 }

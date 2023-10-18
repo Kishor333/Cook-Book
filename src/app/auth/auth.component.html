@@ -38,9 +38,14 @@
                             <span class="absolute group-hover:text-white">Sign in</span>
                         </button>
                     </form>
+                    <!-- <section *ngIf="hasError && !isSignup">
+                        <app-modal [message]="hasError" (isClose)="onCloseModal()"></app-modal>
+                    </section>
                     <section *ngIf="hasError && !isSignup" class="border border-red-400 bg-red-200 text-red-400 p-3 rounded w-full flex justify-center mt-3">
                         <p>{{hasError}}</p>
-                    </section>
+                    </section> -->
+
+                    
                 </div>
             </section>
             <!-- Sign up section -->
@@ -78,14 +83,14 @@
                             <span class="absolute group-hover:text-white">Sign Up</span>
                         </button>
                     </form>
-                    <section *ngIf="hasError && isSignup" class="border border-red-400 bg-red-200 text-red-400 p-3 rounded w-full flex justify-center mt-3">
+                    <!-- <section *ngIf="hasError && isSignup" class="border border-red-400 bg-red-200 text-red-400 p-3 rounded w-full flex justify-center mt-3">
                         <p>{{hasError}}</p>
-                    </section>
+                    </section> -->
                 </div>    
             </section>
         </section>
     
-        <section class="container-bg text-white glass-container top-0 absolute w-[50%] h-full"
+        <section  class="container-bg text-white glass-container top-0 absolute w-[50%] h-full"
            [ngClass]="isSignup ? 'page-active':''">
             <section class="relative h-full w-full">
                 <div class="flex justify-center items-center flex-col front-side absolute inset-0" [ngClass]="!isSignup? 'hide': 'show'" >                
@@ -158,3 +163,5 @@
     </section>
 
 </ng-template> -->
+
+<ng-template app-placeholder></ng-template>
