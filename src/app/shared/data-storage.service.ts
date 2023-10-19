@@ -5,12 +5,16 @@ import { exhaustMap, map, take, tap } from 'rxjs/operators';
 import { RecipeService } from '../recipes/service/recipe.service';
 import { Recipe } from '../recipes/model/recipe.model';
 import { AuthService } from '../auth/auth.service';
+import { Subject } from 'rxjs';
 // import { Ingredient } from './ingredient.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataStorageService {
+
+  saveOption = new Subject<boolean>();
+  
   constructor(
     private http: HttpClient,
     private recService: RecipeService,

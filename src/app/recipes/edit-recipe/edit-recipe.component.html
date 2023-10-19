@@ -5,7 +5,7 @@
             class="glass-btn clear-btn relative inline-flex items-center justify-center text-sm font-medium cursor-pointer clear">
             <span>Cancel</span>
         </button>
-        <button type="submit" [disabled]="!recipeForm.valid"
+        <button type="submit" [disabled]="!recipeForm.valid" (click)="setSave()"
         class="glass-btn  warn-btn  relative inline-flex items-center justify-center text-sm font-medium cursor-pointer delete ml-4">
         <span>Save</span>
         </button>

@@ -17,12 +17,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userExist = false;
   userSub?: Subscription;
 
+  showSave = false;
+  showSaveSub? : Subscription;
+
   constructor(private dataStore:DataStorageService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.userSub =  this.authService.user.subscribe(
       responseUser => {
       this.userExist = !!responseUser;
+      }
+    );
+    this.showSaveSub = this.dataStore.saveOption.subscribe(
+      res => {debugger
+        this.showSave = res;
+        console.log(this.showSave)
       }
     )
   }
@@ -33,7 +42,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   saveData() {
     this.dataStore.storeData();
+    this.showSave = false;
   }
+
 
   logOut() {
     this.authService.logOut();
@@ -49,5 +60,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // }
   ngOnDestroy(){
     this.userSub?.unsubscribe();
+    this.showSaveSub?.unsubscribe();
   }
 }

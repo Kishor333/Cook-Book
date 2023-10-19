@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeService } from '../service/recipe.service';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class EditRecipeComponent implements OnInit {
   constructor(
     private route:ActivatedRoute,
      private router:Router, 
-     private recipeService: RecipeService) {
+     private recipeService: RecipeService,
+     private dataStorageService: DataStorageService) {
       
       }
 
@@ -126,4 +128,9 @@ export class EditRecipeComponent implements OnInit {
   //write function to return sum of two number
   
 
+  setSave() {debugger
+    const a = this.recipeForm
+    console.log('hello')
+    this.dataStorageService.saveOption.next(true);
+  }
 }

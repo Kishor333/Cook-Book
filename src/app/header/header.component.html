@@ -20,7 +20,7 @@
         <div *ngIf="userExist" class="relative" appDropdown>
             <p class="mr-5 font-semibold cursor-pointer text-white hover:text-primary">Manage</p>
             <div class="show absolute top-[50%] right-0 glass-container glass-gray flip-color px-[8px] cursor-pointer text-white z-10 min-w-[150px]">
-                <p class="glass-container border-none text-center !px-[12px] !py-[6px] mb-[8px] hover-action" (click)="saveData()">Save Data</p>
+                <p *ngIf="showSave" class="glass-container border-none text-center !px-[12px] !py-[6px] mb-[8px] hover-action" (click)="saveData()">Save Data</p>
                 <p class="glass-container border-none text-center !px-[12px] !py-[6px] mb-[8px] hover-action" (click)="getRecipe()">Fetch Data</p>
             </div>
         </div>
